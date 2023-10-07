@@ -24,3 +24,12 @@ Change deployment strategy, for example from RollingUpdate to Recreate update th
 ```
 kubectl edit deployment <deployment_name>
 ```
+
+## JOBS
+
+Create a job with a given image
+```
+kubectl create job <job-name> --image=<name of the image>
+kubectl get jobs
+```
+
