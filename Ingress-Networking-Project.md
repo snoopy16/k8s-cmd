@@ -111,7 +111,7 @@ ingress.networking.k8s.io/ingress-wear-watch replaced
 ```
 
 ### CREATE NEW PATH TO SERVICE FOOD DELIVERY
-
+```
 To add a new backend for food delivery service on /food update the ingress resources.
 - backend:
     service:
@@ -146,10 +146,11 @@ Events:            <none>
 ```
 
 If we add another path to the exiting wear-watch ingress it will result in the error such as -
+```
 
 "              /pay      pay-service:8080 (<error: endpoints "pay-service" not found>)"
 
-
+```
 
 Hence we will go about creating a new ingress for pay service. Use the command below -
 
