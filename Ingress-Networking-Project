@@ -1,0 +1,53 @@
+We've Deployed Ingress Controller, resources and Applications. Here is the application - https://30080-port-5ee0bd69a63a4067.labs.kodekloud.com/
+
+
+
+Here are the deployed resources -
+
+```
+$ kubectl get ingress -A
+NAMESPACE   NAME                 CLASS    HOSTS   ADDRESS         PORTS   AGE
+app-space   ingress-wear-watch   <none>   *       10.102.60.135   80      13m
+
+$ kubectl get deployments -A
+NAMESPACE       NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+app-space       default-backend            1/1     1            1           3m8s
+app-space       webapp-video               1/1     1            1           3m8s
+app-space       webapp-wear                1/1     1            1           3m8s
+ingress-nginx   ingress-nginx-controller   1/1     1            1           3m5s
+kube-system     coredns                    2/2     2            2           10m
+
+$ kubectl get service -A
+NAMESPACE       NAME                                 TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+app-space       default-backend-service              ClusterIP   10.102.163.102   <none>        80/TCP                       3m17s
+app-space       video-service                        ClusterIP   10.108.52.250    <none>        8080/TCP                     3m18s
+app-space       wear-service                         ClusterIP   10.103.212.249   <none>        8080/TCP                     3m18s
+default         kubernetes                           ClusterIP   10.96.0.1        <none>        443/TCP                      11m
+ingress-nginx   ingress-nginx-controller             NodePort    10.102.60.135    <none>        80:30080/TCP,443:32103/TCP   3m15s
+ingress-nginx   ingress-nginx-controller-admission   ClusterIP   10.97.97.134     <none>        443/TCP                      3m15s
+kube-system     kube-dns                             ClusterIP   10.96.0.10       <none>        53/UDP,53/TCP,9153/TCP       11m
+
+kubectl describe ingress -A
+Name:             ingress-wear-watch
+Labels:           <none>
+Namespace:        app-space
+Address:          10.102.60.135
+Ingress Class:    <none>
+Default backend:  <default>
+Rules:
+  Host        Path  Backends
+  ----        ----  --------
+  *           
+              /wear    wear-service:8080 (10.244.0.4:8080)
+              /watch   video-service:8080 (10.244.0.5:8080)
+Annotations:  nginx.ingress.kubernetes.io/rewrite-target: /
+              nginx.ingress.kubernetes.io/ssl-redirect: false
+Events:
+  Type    Reason  Age                From                      Message
+  ----    ------  ----               ----                      -------
+  Normal  Sync    46m (x2 over 46m)  nginx-ingress-controller  Scheduled for sync
+```
+
+```
+kubectl get ingress -A -o yaml > ingress-wear-watch.yaml
+```
