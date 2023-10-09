@@ -122,7 +122,8 @@ To add a new backend for food delivery service on /food update the ingress resou
   pathType: Prefix
 
 ```
-# ADD A NEW APPLICATION FOR PAY
+
+### ADD A NEW APPLICATION FOR PAY
 Now we need to route traffic to pay service which is in a different namespace, _critical-space_. Here are the details -
 
 ```
