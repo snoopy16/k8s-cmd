@@ -1,5 +1,8 @@
 We've Deployed Ingress Controller, resources and Applications. Here is the application - https://30080-port-5ee0bd69a63a4067.labs.kodekloud.com/
 
+![Uploading Screenshot 2023-10-09 at 2.34.26 PM.png…]()
+
+
 ### DEPLOYED RESOURCES
 
 Here are the deployed resources -
